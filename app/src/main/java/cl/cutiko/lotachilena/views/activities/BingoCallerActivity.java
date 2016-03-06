@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 
 import cl.cutiko.lotachilena.R;
 import cl.cutiko.lotachilena.adapters.CurrentGameAdapter;
+import cl.cutiko.lotachilena.models.game.Queries;
 
 public class BingoCallerActivity extends AppCompatActivity {
 
@@ -24,6 +25,10 @@ public class BingoCallerActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
+        long gameId = getIntent().getExtras().getLong("gameId", 0);
+        String gameName = new Queries().byId(gameId).getName();
+        getSupportActionBar().setTitle(gameName);
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
         mSectionsPagerAdapter = new CurrentGameAdapter(getSupportFragmentManager());

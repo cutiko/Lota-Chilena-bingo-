@@ -21,6 +21,7 @@ import java.util.GregorianCalendar;
 
 import cl.cutiko.lotachilena.R;
 import cl.cutiko.lotachilena.models.game.Game;
+import cl.cutiko.lotachilena.models.game.Queries;
 import cl.cutiko.lotachilena.views.activities.photUtil.PhotoUtil;
 
 public class CreateGameActivity extends AppCompatActivity {
@@ -29,6 +30,8 @@ public class CreateGameActivity extends AppCompatActivity {
     private Button createGamePhoto, createGameSave;
     private ImageView createGameIv;
     private String photo;
+    private long gameId;
+    private Queries gameQueries = new Queries();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +44,29 @@ public class CreateGameActivity extends AppCompatActivity {
         createGamePlayers = (EditText) findViewById(R.id.createGamePlayers);
         createGameSave = (Button) findViewById(R.id.createGameSave);
 
+        gameId = getIntent().getLongExtra("gameId", 0);
+
+        if (gameId != 0) {
+            getSupportActionBar().setTitle(getString(R.string.editing));
+            createGameSave.setText(getString(R.string.save_edit));
+            setGameDataToEdit();
+        }
+
         setPhotoBtn();
 
         setSaveBtn();
 
+    }
+
+    private void setGameDataToEdit() {
+        Game game = gameQueries.byId(gameId);
+        createGameName.setText(game.getName());
+        photo = game.getPhoto();
+        if (photo != null && !photo.isEmpty()) {
+            createGameIv.setVisibility(View.VISIBLE);
+            setPhoto();
+        }
+        createGamePlayers.setText(String.valueOf(game.getPlayersCount()));
     }
 
     private void setPhotoBtn() {
@@ -83,14 +105,18 @@ public class CreateGameActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode != Activity.RESULT_CANCELED) {
-            File imgFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/" +photo);
-            if(imgFile.exists()){
-                Bitmap myBitmap = new PhotoUtil().getBitmapFromPath(imgFile.getAbsolutePath());
-                createGameIv.setVisibility(View.VISIBLE);
-                createGameIv.setImageBitmap(myBitmap);
-            }
+            setPhoto();
         } else {
             Toast.makeText(CreateGameActivity.this, getString(R.string.photo_cancelled), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void setPhoto() {
+        File imgFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/" +photo);
+        if(imgFile.exists()){
+            Bitmap myBitmap = new PhotoUtil().getBitmapFromPath(imgFile.getAbsolutePath());
+            createGameIv.setVisibility(View.VISIBLE);
+            createGameIv.setImageBitmap(myBitmap);
         }
     }
 
@@ -101,14 +127,25 @@ public class CreateGameActivity extends AppCompatActivity {
                 String gameName = createGameName.getText().toString();
 
                 if (gameName != null && !gameName.isEmpty()) {
-                    Calendar calendar = new GregorianCalendar();
-                    String date = calendar.get(Calendar.DAY_OF_MONTH)+ "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.YEAR);
+
                     String playersCount = createGamePlayers.getText().toString();
                     int players = 0;
                     if (playersCount != null && !playersCount.isEmpty()) {
                         players = Integer.parseInt(playersCount);
                     }
-                    new Game(gameName, date, photo, 0, players).save();
+
+                    if (gameId != 0) {
+                        Game game = gameQueries.byId(gameId);
+                        game.setName(gameName);
+                        game.setPhoto(photo);
+                        game.setPlayersCount(players);
+                        game.save();
+                    } else {
+                        Calendar calendar = new GregorianCalendar();
+                        String date = calendar.get(Calendar.DAY_OF_MONTH)+ "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.YEAR);
+                        new Game(gameName, date, photo, 0, players).save();
+                    }
+
                     Intent goActivity = new Intent(getApplicationContext(), GameListActivity.class);
                     startActivity(goActivity);
                 } else {

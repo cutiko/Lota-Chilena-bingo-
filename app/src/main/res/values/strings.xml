@@ -6,7 +6,7 @@
     <string name="numbers">Números</string>
     <string name="create_game_name">Nombre del Juego</string>
     <string name="create_game_photo">Foto del Juego</string>
-    <string name="create_game">Crear Juego</string>
+    <string name="create_game">Crear Lota</string>
     <string name="photo_cancelled">Foto cancelada :(</string>
     <string name="create_game_error_name">El juego necesita un nombre :)</string>
     <string name="last_number">Último número jugado</string>
@@ -20,8 +20,10 @@
     <string name="edit">Editar</string>
     <string name="edit_title">¿Editar?</string>
     <string name="edit_msg">Desea editar el juego</string>
+    <string name="editing">Editando Lota</string>
     <string name="delete">Borrar</string>
     <string name="cancel">Cancelar</string>
+    <string name="save_edit">Guardar Cambios</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
     <!-- TODO: Remove or change this placeholder text -->

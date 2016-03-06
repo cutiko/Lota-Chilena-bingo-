@@ -2,18 +2,30 @@ package cl.cutiko.lotachilena.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
+import android.os.Environment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.common.hash.HashingOutputStream;
+
+import java.io.File;
 import java.util.List;
 
 import cl.cutiko.lotachilena.R;
 import cl.cutiko.lotachilena.models.game.Game;
+import cl.cutiko.lotachilena.models.players.Player;
+import cl.cutiko.lotachilena.models.players.Queries;
+import cl.cutiko.lotachilena.views.activities.photUtil.PhotoUtil;
 
 /**
  * Created by cutiko on 05-03-16.
@@ -37,15 +49,37 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.View
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
+        String photoName = games.get(position).getPhoto();
+
+        if (photoName != null && !photoName.isEmpty()) {
+            File imgFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/" + photoName);
+            if(imgFile.exists()){
+                Bitmap myBitmap = new PhotoUtil().getBitmapFromPath(imgFile.getAbsolutePath());
+                holder.gamePhoto.setVisibility(View.VISIBLE);
+                holder.gamePhoto.setImageBitmap(myBitmap);
+            } else {
+                holder.gamePhoto.setVisibility(View.GONE);
+            }
+        } else {
+            holder.gamePhoto.setVisibility(View.GONE);
+        }
+
         holder.gameName.setText(games.get(position).getName());
-        holder.gameDate.setText(games.get(position).getDate());
 
         if (games.get(0) == games.get(position)) {
             holder.gameName.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
-            holder.gameDate.setTextColor(ContextCompat.getColor(context, R.color.colorPrimary));
         } else {
             holder.gameName.setTextColor(ContextCompat.getColor(context, R.color.black));
-            holder.gameDate.setTextColor(ContextCompat.getColor(context, R.color.black));
+        }
+
+        holder.gameDate.setText(games.get(position).getDate());
+
+        List<Player> players = new Queries().byGame(games.get(position).getId());
+
+        if (players != null && players.size() > 0) {
+            holder.gamePlayersCount.setText(String.valueOf(players.size()));
+        } else {
+            holder.gamePlayersCount.setText("0");
         }
 
         holder.gameContainer.setOnClickListener(new View.OnClickListener() {
@@ -72,13 +106,17 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.View
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         LinearLayout gameContainer;
-        TextView gameName, gameDate;
+        ImageView gamePhoto;
+        TextView gameName, gamePlayersCount, gameDate;
 
         ViewHolder(View view) {
             super(view);
             gameContainer = (LinearLayout) view.findViewById(R.id.gameContainer);
+            gamePhoto = (ImageView) view.findViewById(R.id.gamePhoto);
             gameName = (TextView) view.findViewById(R.id.gameName);
+            gamePlayersCount = (TextView) view.findViewById(R.id.gamePlayersCount);
             gameDate = (TextView) view.findViewById(R.id.gameDate);
+
         }
 
     }

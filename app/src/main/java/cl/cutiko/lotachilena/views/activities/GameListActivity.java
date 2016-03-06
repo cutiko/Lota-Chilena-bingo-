@@ -58,20 +58,7 @@ public class GameListActivity extends AppCompatActivity {
     private void setLastGamePhoto() {
         AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
 
-        String photoName = games.get(0).getPhoto();
-
-        if (photoName != null && !photoName.isEmpty()) {
-            File imgFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/" + photoName);
-            if(imgFile.exists()){
-                Bitmap myBitmap = new PhotoUtil().getBitmapFromPath(imgFile.getAbsolutePath());
-                BitmapDrawable background = new BitmapDrawable(myBitmap);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                    appBarLayout.setBackground(background);
-                } else {
-                    appBarLayout.setBackgroundDrawable(background);
-                }
-            }
-        }
+        //TODO add a cool background photo
     }
 
     private void setBroadcastRecevier() {

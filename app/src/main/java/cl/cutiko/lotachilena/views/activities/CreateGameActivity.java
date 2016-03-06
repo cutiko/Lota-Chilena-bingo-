@@ -101,7 +101,7 @@ public class CreateGameActivity extends AppCompatActivity {
 
                 if (gameName != null && !gameName.isEmpty()) {
                     Calendar calendar = new GregorianCalendar();
-                    String date = calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.YEAR);
+                    String date = calendar.get(Calendar.DAY_OF_MONTH)+ "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.YEAR);
                     new Game(gameName, date, photo, 0).save();
                     Intent goActivity = new Intent(getApplicationContext(), GameListActivity.class);
                     startActivity(goActivity);

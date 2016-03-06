@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Lota chilena</string>
+    <string name="caller">Cantar</string>
+    <string name="title_activity_game_list">Lista de Juegos</string>
+    <string name="action_settings">Settings</string>
+    <string name="numbers">Números</string>
+    <string name="create_game_name">Nombre del Juego</string>
+    <string name="create_game_photo">Foto del Juego</string>
+    <string name="create_game">Crear Juego</string>
+    <string name="photo_cancelled">Foto cancelada :(</string>
+    <string name="create_game_error_name">El juego necesita un nombre :)</string>
+    <string name="last_number">Último número jugado</string>
+    <string name="out_of_rounds">Se acabaron las rondas</string>
+    <string name="chip_round">Ronda: </string>
+    <string name="round">Ronda</string>
+    <string name="number">número</string>
+    <string name="current_rounds">rondas</string>
+    <string name="title_activity_bingo_caller">Lota Chilena</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

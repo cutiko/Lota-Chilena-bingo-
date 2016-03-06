@@ -96,7 +96,7 @@ public class CallerFragment extends Fragment {
         callerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (roundsCount == 91) {
+                if (roundsCount == 90) {
                     readTheChip(getString(R.string.out_of_rounds));
                 } else {
                     rollTheChips(random);

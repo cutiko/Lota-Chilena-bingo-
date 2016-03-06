@@ -22,4 +22,8 @@ public class Queries {
         return Chip.findById(Chip.class, id);
     }
 
+    public void deleteByGame(long gameId) {
+        Chip.deleteAll(Chip.class, "parent_game = ?", String.valueOf(gameId));
+    }
+
 }

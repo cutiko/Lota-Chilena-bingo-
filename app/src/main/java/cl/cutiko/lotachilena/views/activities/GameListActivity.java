@@ -92,6 +92,7 @@ public class GameListActivity extends AppCompatActivity {
                 .setNegativeButton(getString(R.string.delete), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
                         game.delete();
                         games.clear();
                         List<Game> refreshList = gamesQueries.all();
@@ -100,8 +101,10 @@ public class GameListActivity extends AppCompatActivity {
                                 games.add(gameToAdd);
                             }
                         }
-
                         gamesListAdapter.notifyDataSetChanged();
+
+                        new cl.cutiko.lotachilena.models.chips.Queries().deleteByGame(gameId);
+
                         dialog.cancel();
                     }
                 })

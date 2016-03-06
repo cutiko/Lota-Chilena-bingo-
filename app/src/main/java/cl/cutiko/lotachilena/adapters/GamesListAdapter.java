@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.List;
@@ -76,6 +77,17 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.View
                 clickedGamed.setAction("clickedGame");
                 clickedGamed.putExtra("gameId", games.get(position).getId());
                 context.sendBroadcast(clickedGamed);
+            }
+        });
+
+        holder.gameContainer.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Intent clickedGamed = new Intent();
+                clickedGamed.setAction("longClickedGame");
+                clickedGamed.putExtra("gameId", games.get(position).getId());
+                context.sendBroadcast(clickedGamed);
+                return true;
             }
         });
     }

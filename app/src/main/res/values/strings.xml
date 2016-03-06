@@ -17,6 +17,11 @@
     <string name="current_rounds">rondas</string>
     <string name="title_activity_bingo_caller">Lota Chilena</string>
     <string name="players_count">Jugadores</string>
+    <string name="edit">Editar</string>
+    <string name="edit_title">¿Editar?</string>
+    <string name="edit_msg">Desea editar el juego</string>
+    <string name="delete">Borrar</string>
+    <string name="cancel">Cancelar</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
     <!-- TODO: Remove or change this placeholder text -->

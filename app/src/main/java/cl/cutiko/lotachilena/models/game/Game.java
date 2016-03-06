@@ -8,16 +8,17 @@ import com.orm.SugarRecord;
 public class Game extends SugarRecord{
 
     private String name, date, photo;
-    private int rounds;
+    private int rounds, playersCount;
 
     public Game() {
     }
 
-    public Game(String name, String date, String photo, int rounds) {
+    public Game(String name, String date, String photo, int rounds, int playersCount) {
         this.name = name;
         this.date = date;
         this.photo = photo;
         this.rounds = rounds;
+        this.playersCount = playersCount;
     }
 
     public String getName() {
@@ -50,5 +51,13 @@ public class Game extends SugarRecord{
 
     public void setRounds(int rounds) {
         this.rounds = rounds;
+    }
+
+    public int getPlayersCount() {
+        return playersCount;
+    }
+
+    public void setPlayersCount(int playersCount) {
+        this.playersCount = playersCount;
     }
 }

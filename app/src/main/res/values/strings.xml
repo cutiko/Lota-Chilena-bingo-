@@ -16,6 +16,7 @@
     <string name="number">número</string>
     <string name="current_rounds">rondas</string>
     <string name="title_activity_bingo_caller">Lota Chilena</string>
+    <string name="players_count">Jugadores</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
     <!-- TODO: Remove or change this placeholder text -->

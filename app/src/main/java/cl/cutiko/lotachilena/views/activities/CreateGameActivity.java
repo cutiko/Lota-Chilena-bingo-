@@ -25,7 +25,7 @@ import cl.cutiko.lotachilena.views.activities.photUtil.PhotoUtil;
 
 public class CreateGameActivity extends AppCompatActivity {
 
-    private EditText createGameName;
+    private EditText createGameName, createGamePlayers;
     private Button createGamePhoto, createGameSave;
     private ImageView createGameIv;
     private String photo;
@@ -38,6 +38,7 @@ public class CreateGameActivity extends AppCompatActivity {
         createGameName = (EditText) findViewById(R.id.createGameName);
         createGamePhoto = (Button) findViewById(R.id.createGamePhoto);
         createGameIv = (ImageView) findViewById(R.id.createGameIv);
+        createGamePlayers = (EditText) findViewById(R.id.createGamePlayers);
         createGameSave = (Button) findViewById(R.id.createGameSave);
 
         setPhotoBtn();
@@ -102,11 +103,17 @@ public class CreateGameActivity extends AppCompatActivity {
                 if (gameName != null && !gameName.isEmpty()) {
                     Calendar calendar = new GregorianCalendar();
                     String date = calendar.get(Calendar.DAY_OF_MONTH)+ "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.YEAR);
-                    new Game(gameName, date, photo, 0).save();
+                    String playersCount = createGamePlayers.getText().toString();
+                    int players = 0;
+                    if (playersCount != null && !playersCount.isEmpty()) {
+                        players = Integer.parseInt(playersCount);
+                    }
+                    new Game(gameName, date, photo, 0, players).save();
                     Intent goActivity = new Intent(getApplicationContext(), GameListActivity.class);
                     startActivity(goActivity);
                 } else {
-                    createGameName.setError(getString(R.string.create_game_error_name));
+                    createGameName.setError(
+                            getString(R.string.create_game_error_name));
                 }
 
             }

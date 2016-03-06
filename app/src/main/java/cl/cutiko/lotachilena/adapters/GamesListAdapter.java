@@ -3,8 +3,6 @@ package cl.cutiko.lotachilena.adapters;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Build;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
@@ -13,18 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.google.common.hash.HashingOutputStream;
 
 import java.io.File;
 import java.util.List;
 
 import cl.cutiko.lotachilena.R;
 import cl.cutiko.lotachilena.models.game.Game;
-import cl.cutiko.lotachilena.models.players.Player;
-import cl.cutiko.lotachilena.models.players.Queries;
 import cl.cutiko.lotachilena.views.activities.photUtil.PhotoUtil;
 
 /**
@@ -74,13 +67,7 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.View
 
         holder.gameDate.setText(games.get(position).getDate());
 
-        List<Player> players = new Queries().byGame(games.get(position).getId());
-
-        if (players != null && players.size() > 0) {
-            holder.gamePlayersCount.setText(String.valueOf(players.size()));
-        } else {
-            holder.gamePlayersCount.setText("0");
-        }
+        holder.gamePlayersCount.setText(String.valueOf(games.get(position).getPlayersCount()));
 
         holder.gameContainer.setOnClickListener(new View.OnClickListener() {
             @Override

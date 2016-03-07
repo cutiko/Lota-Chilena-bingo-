@@ -9,6 +9,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,21 +41,11 @@ public class GameListActivity extends AppCompatActivity {
         gamesQueries = new Queries();
         games = gamesQueries.all();
 
-        if (games != null && games.size() > 0) {
-            setLastGamePhoto();
-        }
-
         setBroadcastRecevier();
 
         setGamesList();
 
         setCreateGameBtn();
-    }
-
-    private void setLastGamePhoto() {
-        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar);
-
-        //TODO add a cool background photo
     }
 
     private void setBroadcastRecevier() {

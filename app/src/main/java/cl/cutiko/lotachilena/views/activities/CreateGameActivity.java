@@ -131,17 +131,17 @@ public class CreateGameActivity extends AppCompatActivity {
                         game.setName(gameName);
                         game.setPhoto(photo);
                         game.save();
-                    } else {
-                        Calendar calendar = new GregorianCalendar();
-                        String date = calendar.get(Calendar.DAY_OF_MONTH)+ "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.YEAR);
-                        new Game(gameName, date, photo, 0).save();
-                    }
 
-                    if (gameId != 0) {
                         Intent goActivity = new Intent(getApplicationContext(), GameListActivity.class);
                         startActivity(goActivity);
                     } else {
+                        Calendar calendar = new GregorianCalendar();
+                        String date = calendar.get(Calendar.DAY_OF_MONTH)+ "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.YEAR);
+                        Game game = new Game(gameName, date, photo, 0);
+                        game.save();
+
                         Intent goActivity = new Intent(getApplicationContext(), AddPlayersActivity.class);
+                        goActivity.putExtra("gameId", game.getId());
                         startActivity(goActivity);
                     }
 

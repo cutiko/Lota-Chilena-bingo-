@@ -1,7 +1,6 @@
 package cl.cutiko.lotachilena.models.players;
 
 import com.orm.SugarRecord;
-import com.orm.dsl.Ignore;
 
 /**
  * Created by cutiko on 19-03-16.

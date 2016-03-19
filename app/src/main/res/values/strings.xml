@@ -32,5 +32,8 @@
     <string name="winner_instructions">Seleccione si el jugador ha ganado</string>
     <string name="winner">Lota</string>
     <string name="flirt">Pinche</string>
+    <string name="repeated_winner">Ya hay ganador, puede borrar el actual manteniéndolo presionado</string>
+    <string name="delete_winner">¿Borrar el ganador?</string>
+    <string name="accept">Aceptar</string>
 
 </resources>

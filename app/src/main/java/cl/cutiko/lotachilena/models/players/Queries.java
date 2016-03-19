@@ -16,4 +16,8 @@ public class Queries {
         }
     }
 
+    public Player byId(long id) {
+        return Player.findById(Player.class, id);
+    }
+
 }

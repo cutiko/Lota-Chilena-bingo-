@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import cl.cutiko.lotachilena.R;
@@ -37,7 +38,12 @@ public class AddPlayersActivity extends AppCompatActivity {
     private String photo;
 
     private List<Player> everyPlayer;
-    private PlayersAdapter playersAdapter;
+    private PlayersAdapter previousPlayersAdapter;
+
+    private List<Player> currentPlayers;
+    private PlayersAdapter currentPlayersAdapter;
+
+    private cl.cutiko.lotachilena.models.players.Queries playersQueries;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,14 +51,17 @@ public class AddPlayersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_players);
 
         gameId = getIntent().getLongExtra("gameId", 0);
+        playersQueries = new cl.cutiko.lotachilena.models.players.Queries();
 
         addPlayerBtn = (Button) findViewById(R.id.addPlayerBtn);
         previousPlayerBtn = (Button) findViewById(R.id.previousPlayerBtn);
         currentPlayersBtn = (Button) findViewById(R.id.currentPlayersBtn);
 
         setAddPlayerBtn();
-
         setPreviousPlayerBtn();
+        setCurrentPlayersBtn();
+
+        setStartGame();
 
     }
 
@@ -99,6 +108,8 @@ public class AddPlayersActivity extends AppCompatActivity {
                     Player player = new Player(playerName, photo);
                     player.save();
                     new GamePlayer(gameId, player.getId(), false, false).save();
+                    currentPlayers.add(player);
+                    currentPlayersAdapter.notifyDataSetChanged();
                     addPlayerModal.cancel();
                 } else {
                     nameEt.setError(getString(R.string.error_name));
@@ -115,22 +126,24 @@ public class AddPlayersActivity extends AppCompatActivity {
     }
 
     private void setPreviousPlayerBtn() {
-        everyPlayer = new cl.cutiko.lotachilena.models.players.Queries().every();
-        playersAdapter = new PlayersAdapter(this, R.layout.player_list_item, everyPlayer);
+        everyPlayer = playersQueries.every();
+        previousPlayersAdapter = new PlayersAdapter(this, R.layout.player_list_item, everyPlayer);
 
         final Dialog previousPlayersModal = new Dialog(this);
         previousPlayersModal.requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-        previousPlayersModal.setContentView(R.layout.previous_players_modal);
-        ListView previousPlayerModalList = (ListView) previousPlayersModal.findViewById(R.id.previousPlayerModalList);
-        previousPlayerModalList.setAdapter(playersAdapter);
+        previousPlayersModal.setContentView(R.layout.players_list_modal);
+        ListView playersModalList = (ListView) previousPlayersModal.findViewById(R.id.playersModalList);
+        playersModalList.setAdapter(previousPlayersAdapter);
 
-        previousPlayerModalList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        playersModalList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                currentPlayers.add(playersQueries.byId(id));
+                currentPlayersAdapter.notifyDataSetChanged();
                 new GamePlayer(gameId, id, false, false);
                 everyPlayer.remove(position);
-                playersAdapter.notifyDataSetChanged();
+                previousPlayersAdapter.notifyDataSetChanged();
                 previousPlayersModal.cancel();
             }
         });
@@ -142,6 +155,51 @@ public class AddPlayersActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void setCurrentPlayersBtn() {
+        currentPlayers = new ArrayList<>();
+        currentPlayersAdapter = new PlayersAdapter(this, R.layout.player_list_item, currentPlayers);
+
+        final Dialog currentPlayersModal = new Dialog(this);
+        currentPlayersModal.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        currentPlayersModal.setContentView(R.layout.players_list_modal);
+        ListView playersModalList = (ListView) currentPlayersModal.findViewById(R.id.playersModalList);
+        playersModalList.setAdapter(currentPlayersAdapter);
+
+        playersModalList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                currentPlayers.remove(position);
+                currentPlayersAdapter.notifyDataSetChanged();
+                currentPlayersModal.cancel();
+                return false;
+            }
+        });
+
+        currentPlayersBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (currentPlayers != null && currentPlayers.size() > 0) {
+                    currentPlayersModal.show();
+                } else {
+                    Toast.makeText(AddPlayersActivity.this, getString(R.string.players_intructions), Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
+
+    private void setStartGame() {
+        Button startGame = (Button) findViewById(R.id.startGame);
+        startGame.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent goActivity = new Intent(AddPlayersActivity.this, BingoCallerActivity.class);
+                goActivity.putExtra("gameId", gameId);
+                startActivity(goActivity);
+            }
+        });
     }
 
 

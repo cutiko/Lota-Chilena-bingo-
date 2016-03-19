@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -96,7 +97,10 @@ public class PlayersFragment extends Fragment {
             }
 
             playerName.setText(player.getName());
+            playerName.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
             winCount.setText(String.valueOf(player.getWinCount()));
+            winCount.setTextColor(ContextCompat.getColor(getContext(), R.color.colorAccent));
+            winCount.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_action_star_10, 0, 0, 0);
             flirtCount.setText(String.valueOf(player.getFlirtCount()));
 
             gameWinner.setOnLongClickListener(new View.OnLongClickListener() {
@@ -155,8 +159,11 @@ public class PlayersFragment extends Fragment {
             }
 
             playerName.setText(player.getName());
+            playerName.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
             winCount.setText(String.valueOf(player.getWinCount()));
             flirtCount.setText(String.valueOf(player.getFlirtCount()));
+            flirtCount.setTextColor(ContextCompat.getColor(getContext(), R.color.colorPrimary));
+            flirtCount.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_action_heart, 0, 0, 0);
 
             gameFlirt.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override

@@ -1,6 +1,7 @@
 package cl.cutiko.lotachilena.models.game;
 
 import com.orm.SugarRecord;
+import com.orm.dsl.Ignore;
 
 /**
  * Created by cutiko on 05-03-16.
@@ -9,6 +10,8 @@ public class Game extends SugarRecord{
 
     private String name, date, photo;
     private int rounds;
+    @Ignore
+    private int playersCount;
 
     public Game() {
     }
@@ -50,5 +53,9 @@ public class Game extends SugarRecord{
 
     public void setRounds(int rounds) {
         this.rounds = rounds;
+    }
+
+    public int getPlayersCount() {
+        return new cl.cutiko.lotachilena.models.gamesPlayers.Queries().playersByGame(getId());
     }
 }

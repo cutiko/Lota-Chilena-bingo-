@@ -27,5 +27,6 @@
     <string name="current_players">Ver jugadores agregados</string>
     <string name="start_game">Empezar a jugar</string>
     <string name="add_players">Añadir Jugadores</string>
+    <string name="players">Jugadores</string>
 
 </resources>

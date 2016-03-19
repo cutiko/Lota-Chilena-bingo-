@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import cl.cutiko.lotachilena.R;
 import cl.cutiko.lotachilena.views.fragments.CallerFragment;
 import cl.cutiko.lotachilena.views.fragments.NumbersFragment;
+import cl.cutiko.lotachilena.views.fragments.PlayersFragment;
 
 /**
  * Created by cutiko on 05-03-16.
@@ -33,6 +34,9 @@ public class CurrentGameAdapter extends FragmentPagerAdapter {
             case 1:
                 fragment = new NumbersFragment();
                 break;
+            case 2:
+                fragment = new PlayersFragment();
+                break;
         }
 
         return fragment;
@@ -40,7 +44,7 @@ public class CurrentGameAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -50,6 +54,8 @@ public class CurrentGameAdapter extends FragmentPagerAdapter {
                 return context.getString(R.string.game);
             case 1:
                 return context.getString(R.string.numbers);
+            case 2:
+                return context.getString(R.string.players);
         }
         return null;
     }

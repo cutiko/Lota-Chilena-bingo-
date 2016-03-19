@@ -2,17 +2,28 @@ package cl.cutiko.lotachilena.models.gamesPlayers;
 
 import java.util.List;
 
+import cl.cutiko.lotachilena.models.players.Player;
+
 /**
  * Created by cutiko on 19-03-16.
  */
 public class Queries {
 
-    public int playersByGame(long gameId) {
-        List<GamePlayer> playersByGame = GamePlayer.find(GamePlayer.class, "game_id = ?", String.valueOf(gameId));
-        if (playersByGame != null && playersByGame.size() > 0) {
-            return playersByGame.size();
+    public int countByGame(long gameId) {
+        List<GamePlayer> byGame = GamePlayer.find(GamePlayer.class, "game_id = ?", String.valueOf(gameId));
+        if (byGame != null && byGame.size() > 0) {
+            return byGame.size();
         } else {
             return 0;
+        }
+    }
+
+    public List<GamePlayer> listedByGame(long gameId) {
+        List<GamePlayer> byGame = GamePlayer.find(GamePlayer.class, "game_id = ?", String.valueOf(gameId));
+        if (byGame != null && byGame.size() > 0) {
+            return byGame;
+        } else {
+            return null;
         }
     }
 

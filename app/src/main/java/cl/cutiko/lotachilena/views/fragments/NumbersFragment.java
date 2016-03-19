@@ -40,7 +40,7 @@ public class NumbersFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static NumbersFragment newInstance(String param1, String param2) {
+    public static NumbersFragment newInstance() {
         NumbersFragment fragment = new NumbersFragment();
         return fragment;
     }

@@ -38,7 +38,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/playerName"
                 android:layout_toRightOf="@+id/playerPhoto"
-                android:drawableLeft="@mipmap/ic_grade_black_24dp" />
+                android:drawableLeft="@mipmap/ic_grade_black_24dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/gray" />
 
             <TextView
                 android:id="@+id/flirtCount"
@@ -46,7 +48,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/playerName"
-                android:drawableLeft="@mipmap/ic_favorite_black_24dp" />
+                android:drawableLeft="@mipmap/ic_favorite_black_24dp"
+                android:gravity="center_vertical"
+                android:textColor="@color/gray" />
 
 
         </RelativeLayout>

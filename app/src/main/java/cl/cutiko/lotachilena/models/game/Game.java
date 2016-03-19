@@ -56,6 +56,6 @@ public class Game extends SugarRecord{
     }
 
     public int getPlayersCount() {
-        return new cl.cutiko.lotachilena.models.gamesPlayers.Queries().playersByGame(getId());
+        return new cl.cutiko.lotachilena.models.gamesPlayers.Queries().countByGame(getId());
     }
 }

@@ -128,7 +128,10 @@ public class AddPlayersActivity extends AppCompatActivity {
         previousPlayerModalList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+                new GamePlayer(gameId, id, false, false);
+                everyPlayer.remove(position);
+                playersAdapter.notifyDataSetChanged();
+                previousPlayersModal.cancel();
             }
         });
 

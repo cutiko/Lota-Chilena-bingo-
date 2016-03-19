@@ -47,7 +47,7 @@ public class CreateGameActivity extends AppCompatActivity {
 
         if (gameId != 0) {
             getSupportActionBar().setTitle(getString(R.string.editing));
-            createGameSave.setText(getString(R.string.save_edit));
+            createGameSave.setText(getString(R.string.save));
             setGameDataToEdit();
         }
 
@@ -147,7 +147,7 @@ public class CreateGameActivity extends AppCompatActivity {
 
                 } else {
                     createGameName.setError(
-                            getString(R.string.create_game_error_name));
+                            getString(R.string.error_name));
                 }
 
             }

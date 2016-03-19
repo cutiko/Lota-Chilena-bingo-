@@ -6,7 +6,7 @@
     <string name="create_game_photo">Foto</string>
     <string name="create_game">Crear Lota</string>
     <string name="photo_cancelled">Foto cancelada :(</string>
-    <string name="create_game_error_name">El juego necesita un nombre :)</string>
+    <string name="error_name">Se necesita un nombre</string>
     <string name="last_number">Último número jugado</string>
     <string name="out_of_rounds">Se acabaron las rondas</string>
     <string name="chip_round">Ronda: </string>
@@ -20,11 +20,12 @@
     <string name="editing">Editando Lota</string>
     <string name="delete">Borrar</string>
     <string name="cancel">Cancelar</string>
-    <string name="save_edit">Guardar Cambios</string>
+    <string name="save">Guardar</string>
     <string name="create_player">Añadir nuevo jugador</string>
     <string name="players_intructions">Cree nuevos jugadores o añada los ya guardados al juego.\nTambién puede empezar un juego anónimo.</string>
     <string name="previous_player">Añadir jugador guardado</string>
     <string name="current_players">Ver jugadores agregados</string>
     <string name="start_game">Empezar a jugar</string>
+    <string name="add_players">Añadir Jugadores</string>
 
 </resources>

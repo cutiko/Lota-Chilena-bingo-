@@ -68,8 +68,7 @@ public class GamesListAdapter extends RecyclerView.Adapter<GamesListAdapter.View
 
         holder.gameDate.setText(games.get(position).getDate());
 
-        //TODO fix this with the actual count
-        holder.gamePlayersCount.setText(String.valueOf(8));
+        holder.gamePlayersCount.setText(String.valueOf(games.get(position).getPlayersCount()));
 
         holder.gameContainer.setOnClickListener(new View.OnClickListener() {
             @Override

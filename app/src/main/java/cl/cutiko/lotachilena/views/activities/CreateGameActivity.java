@@ -26,7 +26,7 @@ import cl.cutiko.lotachilena.views.activities.photUtil.PhotoUtil;
 
 public class CreateGameActivity extends AppCompatActivity {
 
-    private EditText createGameName, createGamePlayers;
+    private EditText createGameName;
     private Button createGamePhoto, createGameSave;
     private ImageView createGameIv;
     private String photo;
@@ -41,7 +41,6 @@ public class CreateGameActivity extends AppCompatActivity {
         createGameName = (EditText) findViewById(R.id.createGameName);
         createGamePhoto = (Button) findViewById(R.id.createGamePhoto);
         createGameIv = (ImageView) findViewById(R.id.createGameIv);
-        createGamePlayers = (EditText) findViewById(R.id.createGamePlayers);
         createGameSave = (Button) findViewById(R.id.createGameSave);
 
         gameId = getIntent().getLongExtra("gameId", 0);
@@ -66,7 +65,6 @@ public class CreateGameActivity extends AppCompatActivity {
             createGameIv.setVisibility(View.VISIBLE);
             setPhoto();
         }
-        createGamePlayers.setText(String.valueOf(game.getPlayersCount()));
     }
 
     private void setPhotoBtn() {
@@ -128,22 +126,15 @@ public class CreateGameActivity extends AppCompatActivity {
 
                 if (gameName != null && !gameName.isEmpty()) {
 
-                    String playersCount = createGamePlayers.getText().toString();
-                    int players = 0;
-                    if (playersCount != null && !playersCount.isEmpty()) {
-                        players = Integer.parseInt(playersCount);
-                    }
-
                     if (gameId != 0) {
                         Game game = gameQueries.byId(gameId);
                         game.setName(gameName);
                         game.setPhoto(photo);
-                        game.setPlayersCount(players);
                         game.save();
                     } else {
                         Calendar calendar = new GregorianCalendar();
                         String date = calendar.get(Calendar.DAY_OF_MONTH)+ "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.YEAR);
-                        new Game(gameName, date, photo, 0, players).save();
+                        new Game(gameName, date, photo, 0).save();
                     }
 
                     Intent goActivity = new Intent(getApplicationContext(), GameListActivity.class);

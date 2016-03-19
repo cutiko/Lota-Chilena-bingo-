@@ -49,24 +49,6 @@
             android:padding="13dp"
             android:visibility="gone" />
 
-        <android.support.design.widget.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginTop="34dp">
-
-            <EditText
-                android:id="@+id/createGamePlayers"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/players_count"
-                android:inputType="number"
-                android:singleLine="true"
-                android:textColor="@color/black"
-                android:textColorHint="@color/gray" />
-
-        </android.support.design.widget.TextInputLayout>
-
         <Button
             android:id="@+id/createGameSave"
             android:layout_width="match_parent"

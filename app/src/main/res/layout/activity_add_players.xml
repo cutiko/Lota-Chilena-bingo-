@@ -21,13 +21,13 @@
             android:textColor="@color/gray"
             android:textSize="13sp" />
 
+        <View style="@style/horizontalLine"></View>
+
         <Button
             android:id="@+id/addPlayerBtn"
             style="@style/primaryBtn"
             android:drawableRight="@mipmap/ic_add_white_24dp"
             android:text="@string/create_player" />
-
-        <View style="@style/horizontalLine"></View>
 
         <Button
             android:id="@+id/previousPlayerBtn"
@@ -35,13 +35,13 @@
             android:drawableRight="@mipmap/ic_add_white_24dp"
             android:text="@string/previous_player" />
 
-        <View style="@style/horizontalLine"></View>
-
         <Button
             android:id="@+id/currentPlayersBtn"
             style="@style/primaryBtn"
             android:drawableRight="@mipmap/ic_remove_red_eye_white_24dp"
             android:text="@string/current_players" />
+
+        <View style="@style/horizontalLine"></View>
 
         <Button
             android:id="@+id/startGame"

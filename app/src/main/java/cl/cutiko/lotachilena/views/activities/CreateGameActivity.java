@@ -134,6 +134,7 @@ public class CreateGameActivity extends AppCompatActivity {
 
                         Intent goActivity = new Intent(getApplicationContext(), GameListActivity.class);
                         startActivity(goActivity);
+                        finish();
                     } else {
                         Calendar calendar = new GregorianCalendar();
                         String date = calendar.get(Calendar.DAY_OF_MONTH)+ "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.YEAR);
@@ -143,6 +144,7 @@ public class CreateGameActivity extends AppCompatActivity {
                         Intent goActivity = new Intent(getApplicationContext(), AddPlayersActivity.class);
                         goActivity.putExtra("gameId", game.getId());
                         startActivity(goActivity);
+                        finish();
                     }
 
                 } else {

@@ -198,6 +198,7 @@ public class AddPlayersActivity extends AppCompatActivity {
                 Intent goActivity = new Intent(AddPlayersActivity.this, BingoCallerActivity.class);
                 goActivity.putExtra("gameId", gameId);
                 startActivity(goActivity);
+                finish();
             }
         });
     }

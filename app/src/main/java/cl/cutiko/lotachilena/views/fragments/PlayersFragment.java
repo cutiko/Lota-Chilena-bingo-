@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -58,6 +59,13 @@ public class PlayersFragment extends Fragment {
         playersAdapter = new PlayersAdapter(getContext(), R.layout.player_list_item, players);
 
         gamePlayersList.setAdapter(playersAdapter);
+
+        gamePlayersList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
 
     }
 }

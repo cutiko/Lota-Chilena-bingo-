@@ -1,8 +1,17 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="cl.cutiko.lotachilena.views.fragments.PlayersFragment">
+
+    <include
+        android:id="@+id/gameWinner"
+        layout="@layout/player_list_item"></include>
+
+    <include
+        android:id="@+id/gameFlirt"
+        layout="@layout/player_list_item"></include>
 
     <ListView
         android:id="@+id/gamePlayersList"
@@ -10,4 +19,4 @@
         android:layout_height="match_parent">
     </ListView>
 
-</FrameLayout>
+</LinearLayout>

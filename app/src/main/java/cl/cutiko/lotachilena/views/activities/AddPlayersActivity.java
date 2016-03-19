@@ -141,7 +141,7 @@ public class AddPlayersActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 currentPlayers.add(playersQueries.byId(id));
                 currentPlayersAdapter.notifyDataSetChanged();
-                new GamePlayer(gameId, id, false, false);
+                new GamePlayer(gameId, id, false, false).save();
                 everyPlayer.remove(position);
                 previousPlayersAdapter.notifyDataSetChanged();
                 previousPlayersModal.cancel();

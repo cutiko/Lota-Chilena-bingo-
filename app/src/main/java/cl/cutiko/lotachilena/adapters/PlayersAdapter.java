@@ -45,9 +45,9 @@ public class PlayersAdapter extends ArrayAdapter<Player> {
 
         Player player = getItem(position);
 
-        String playerPhoto = player.getPhoto();
-        if (playerPhoto != null && !playerPhoto.isEmpty()) {
-            File imgFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/" + playerPhoto);
+        String photoName = player.getPhoto();
+        if (photoName != null && !photoName.isEmpty()) {
+            File imgFile = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/" + photoName);
             if(imgFile.exists()){
                 Bitmap myBitmap = new PhotoUtil().getBitmapFromPath(imgFile.getAbsolutePath());
                 holder.playerPhoto.setImageBitmap(myBitmap);

@@ -28,5 +28,9 @@
     <string name="start_game">Empezar a jugar</string>
     <string name="add_players">Añadir Jugadores</string>
     <string name="players">Jugadores</string>
+    <string name="winners_question">¿Ganador? ¿Pinche?</string>
+    <string name="winner_instructions">Seleccione si el jugador ha ganado</string>
+    <string name="winner">Lota</string>
+    <string name="flirt">Pinche</string>
 
 </resources>

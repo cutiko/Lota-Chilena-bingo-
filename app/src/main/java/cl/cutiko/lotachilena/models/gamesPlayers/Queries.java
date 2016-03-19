@@ -45,4 +45,38 @@ public class Queries {
         }
     }
 
+    public long gameWinner(long gameId) {
+        List<GamePlayer> byGame = listedByGame(gameId);
+        if (byGame != null && byGame.size() > 0) {
+            long winner = 0;
+            for (GamePlayer gamePlayer : byGame) {
+                if (gamePlayer.isWinner()) {
+                    winner = gamePlayer.getPlayerId();
+                }
+            }
+            return winner;
+        } else {
+            return 0;
+        }
+    }
+
+    public long gameFlirt(long gameId) {
+        List<GamePlayer> byGame = listedByGame(gameId);
+        if (byGame != null && byGame.size() > 0) {
+            long flirt = 0;
+            for (GamePlayer gamePlayer : byGame) {
+                if (gamePlayer.isFlirt()) {
+                    flirt = gamePlayer.getPlayerId();
+                }
+            }
+            return flirt;
+        } else {
+            return 0;
+        }
+    }
+
+    public GamePlayer intersection(long gameId, long playerId) {
+        return GamePlayer.find(GamePlayer.class, "game_id = ? AND player_id = ?", String.valueOf(gameId), String.valueOf(playerId)).get(0);
+    }
+
 }

@@ -18,16 +18,10 @@
 
         <Button
             android:id="@+id/createGameSave"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="55dp"
-            android:background="@drawable/accent_btn_bg"
+            style="@style/accentBtn"
             android:drawableRight="@mipmap/ic_save_white_24dp"
-            android:padding="21dp"
-            android:text="@string/create_game"
-            android:textColor="@color/white"
-            android:textSize="21sp" />
-    </LinearLayout>
+            android:text="@string/create_game" />
 
+    </LinearLayout>
 
 </ScrollView>

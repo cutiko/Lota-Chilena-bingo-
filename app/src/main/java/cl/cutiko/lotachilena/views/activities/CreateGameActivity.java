@@ -137,8 +137,14 @@ public class CreateGameActivity extends AppCompatActivity {
                         new Game(gameName, date, photo, 0).save();
                     }
 
-                    Intent goActivity = new Intent(getApplicationContext(), GameListActivity.class);
-                    startActivity(goActivity);
+                    if (gameId != 0) {
+                        Intent goActivity = new Intent(getApplicationContext(), GameListActivity.class);
+                        startActivity(goActivity);
+                    } else {
+                        Intent goActivity = new Intent(getApplicationContext(), AddPlayersActivity.class);
+                        startActivity(goActivity);
+                    }
+
                 } else {
                     createGameName.setError(
                             getString(R.string.create_game_error_name));

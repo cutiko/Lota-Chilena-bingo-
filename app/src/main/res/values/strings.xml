@@ -3,7 +3,7 @@
     <string name="game">Lota</string>
     <string name="numbers">Números</string>
     <string name="name">Nombre</string>
-    <string name="create_game_photo">Foto del Juego</string>
+    <string name="create_game_photo">Foto</string>
     <string name="create_game">Crear Lota</string>
     <string name="photo_cancelled">Foto cancelada :(</string>
     <string name="create_game_error_name">El juego necesita un nombre :)</string>
@@ -21,5 +21,10 @@
     <string name="delete">Borrar</string>
     <string name="cancel">Cancelar</string>
     <string name="save_edit">Guardar Cambios</string>
+    <string name="create_player">Añadir nuevo jugador</string>
+    <string name="players_intructions">Cree nuevos jugadores o añada los ya guardados al juego.\nTambién puede empezar un juego anónimo.</string>
+    <string name="previous_player">Añadir jugador guardado</string>
+    <string name="current_players">Ver jugadores agregados</string>
+    <string name="start_game">Empezar a jugar</string>
 
 </resources>

@@ -18,7 +18,7 @@
 
     <Button
         android:id="@+id/photoBtn"
-        style="@style/blueBtn"
+        style="@style/primaryBtn"
         android:drawableRight="@mipmap/ic_photo_camera_white_24dp"
         android:text="@string/create_game_photo" />
 
@@ -29,4 +29,5 @@
         android:layout_marginTop="21dp"
         android:padding="13dp"
         android:visibility="gone" />
+
 </merge>

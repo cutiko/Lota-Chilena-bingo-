@@ -3,7 +3,6 @@
     package="cl.cutiko.lotachilena">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
@@ -36,22 +35,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".views.activities.BingoCallerActivity"
-            android:parentActivityName=".views.activities.GameListActivity"
-            android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait">
+            android:parentActivityName=".views.activities.GameListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="cl.cutiko.lotachilena.views.activities.GameListActivity" />
         </activity>
-
-        <activity android:name=".views.activities.CreateGameActivity"
-            android:label="@string/create_game"
-            android:configChanges="orientation|keyboardHidden|screenSize"></activity>
-
+        <activity
+            android:name=".views.activities.CreateGameActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/create_game" />
+        <activity android:name=".views.activities.AddPlayersActivity"></activity>
     </application>
 
 </manifest>

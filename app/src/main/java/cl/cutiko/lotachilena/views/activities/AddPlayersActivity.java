@@ -11,15 +11,19 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import cl.cutiko.lotachilena.R;
+import cl.cutiko.lotachilena.adapters.PlayersAdapter;
 import cl.cutiko.lotachilena.models.gamesPlayers.GamePlayer;
 import cl.cutiko.lotachilena.models.players.Player;
 import cl.cutiko.lotachilena.views.activities.photUtil.PhotoUtil;
@@ -27,11 +31,13 @@ import cl.cutiko.lotachilena.views.activities.photUtil.PhotoUtil;
 public class AddPlayersActivity extends AppCompatActivity {
 
     private Button addPlayerBtn, previousPlayerBtn, currentPlayersBtn;
-    private Dialog addPlayerModal;
     private ImageView photoIv;
 
     private long gameId;
     private String photo;
+
+    private List<Player> everyPlayer;
+    private PlayersAdapter playersAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +52,12 @@ public class AddPlayersActivity extends AppCompatActivity {
 
         setAddPlayerBtn();
 
+        setPreviousPlayerBtn();
+
     }
 
     private void setAddPlayerBtn(){
-        addPlayerModal = new Dialog(this);
+        final Dialog addPlayerModal = new Dialog(this);
         addPlayerModal.requestWindowFeature(Window.FEATURE_NO_TITLE);
         addPlayerModal.setCancelable(false);
 
@@ -88,7 +96,7 @@ public class AddPlayersActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String playerName = nameEt.getText().toString();
                 if (playerName != null && !playerName.isEmpty()) {
-                    Player player = new Player(playerName, photo, 0);
+                    Player player = new Player(playerName, photo);
                     player.save();
                     new GamePlayer(gameId, player.getId(), false, false).save();
                     addPlayerModal.cancel();
@@ -104,6 +112,33 @@ public class AddPlayersActivity extends AppCompatActivity {
                 addPlayerModal.show();
             }
         });
+    }
+
+    private void setPreviousPlayerBtn() {
+        everyPlayer = new cl.cutiko.lotachilena.models.players.Queries().every();
+        playersAdapter = new PlayersAdapter(this, R.layout.player_list_item, everyPlayer);
+
+        final Dialog previousPlayersModal = new Dialog(this);
+        previousPlayersModal.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+        previousPlayersModal.setContentView(R.layout.previous_players_modal);
+        ListView previousPlayerModalList = (ListView) previousPlayersModal.findViewById(R.id.previousPlayerModalList);
+        previousPlayerModalList.setAdapter(playersAdapter);
+
+        previousPlayerModalList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });
+
+        previousPlayerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                previousPlayersModal.show();
+            }
+        });
+
     }
 
 

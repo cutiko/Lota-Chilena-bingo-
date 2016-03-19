@@ -16,4 +16,22 @@ public class Queries {
         }
     }
 
+    public int winsByPlayer(long playerId) {
+        List<GamePlayer> winsByPlayer = GamePlayer.find(GamePlayer.class, "player_id = ? AND winner = 1", String.valueOf(playerId));
+        if (winsByPlayer != null && winsByPlayer.size() > 0) {
+            return winsByPlayer.size();
+        } else {
+            return 0;
+        }
+    }
+
+    public int flirtByPlayer(long playerId) {
+        List<GamePlayer> flirtsByPlayer = GamePlayer.find(GamePlayer.class, "player_id = ? AND flirt = 1", String.valueOf(playerId));
+        if (flirtsByPlayer != null && flirtsByPlayer.size() > 0) {
+            return flirtsByPlayer.size();
+        } else {
+            return 0;
+        }
+    }
+
 }

@@ -162,4 +162,10 @@ public class CallerFragment extends Fragment {
             }
         });
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        textToSpeech.shutdown();
+    }
 }

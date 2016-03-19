@@ -126,7 +126,7 @@ public class NumbersFragment extends Fragment {
         }catch (Exception e){
 
         }
+        textToSpeech.shutdown();
     }
-
 
 }

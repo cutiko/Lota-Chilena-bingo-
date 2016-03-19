@@ -1,6 +1,7 @@
 package cl.cutiko.lotachilena.models.players;
 
 import com.orm.SugarRecord;
+import com.orm.dsl.Ignore;
 
 /**
  * Created by cutiko on 19-03-16.
@@ -8,15 +9,16 @@ import com.orm.SugarRecord;
 public class Player extends SugarRecord {
 
     private String name, photo;
-    private int victories;
+
+    @Ignore
+    private int winCount, flirtCount;
 
     public Player() {
     }
 
-    public Player(String name, String photo, int victories) {
+    public Player(String name, String photo) {
         this.name = name;
         this.photo = photo;
-        this.victories = victories;
     }
 
     public String getName() {
@@ -35,11 +37,11 @@ public class Player extends SugarRecord {
         this.photo = photo;
     }
 
-    public int getVictories() {
-        return victories;
+    public int getWinCount() {
+        return new cl.cutiko.lotachilena.models.gamesPlayers.Queries().winsByPlayer(getId());
     }
 
-    public void setVictories(int victories) {
-        this.victories = victories;
+    public int getFlirtCount() {
+        return new cl.cutiko.lotachilena.models.gamesPlayers.Queries().flirtByPlayer(getId());
     }
 }

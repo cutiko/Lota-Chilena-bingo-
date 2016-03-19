@@ -38,9 +38,9 @@ public class CreateGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_game);
 
-        createGameName = (EditText) findViewById(R.id.createGameName);
-        createGamePhoto = (Button) findViewById(R.id.createGamePhoto);
-        createGameIv = (ImageView) findViewById(R.id.createGameIv);
+        createGameName = (EditText) findViewById(R.id.nameEt);
+        createGamePhoto = (Button) findViewById(R.id.photoBtn);
+        createGameIv = (ImageView) findViewById(R.id.photoIv);
         createGameSave = (Button) findViewById(R.id.createGameSave);
 
         gameId = getIntent().getLongExtra("gameId", 0);

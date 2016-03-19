@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true">
+
+        <EditText
+            android:id="@+id/nameEt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name"
+            android:singleLine="true"
+            android:textColor="@color/black"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/photoBtn"
+        style="@style/blueBtn"
+        android:drawableRight="@mipmap/ic_photo_camera_white_24dp"
+        android:text="@string/create_game_photo" />
+
+    <ImageView
+        android:id="@+id/photoIv"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="21dp"
+        android:padding="13dp"
+        android:visibility="gone" />
+</merge>

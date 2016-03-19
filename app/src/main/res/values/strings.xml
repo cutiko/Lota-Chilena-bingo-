@@ -2,7 +2,7 @@
     <string name="app_name">Lota chilena</string>
     <string name="game">Lota</string>
     <string name="numbers">Números</string>
-    <string name="create_game_name">Nombre del Juego</string>
+    <string name="name">Nombre</string>
     <string name="create_game_photo">Foto del Juego</string>
     <string name="create_game">Crear Lota</string>
     <string name="photo_cancelled">Foto cancelada :(</string>

@@ -52,10 +52,10 @@ public class PlayersAdapter extends ArrayAdapter<Player> {
                 Bitmap myBitmap = new PhotoUtil().getBitmapFromPath(imgFile.getAbsolutePath());
                 holder.playerPhoto.setImageBitmap(myBitmap);
             } else {
-                holder.playerPhoto.setImageResource(R.mipmap.icon);
+                holder.playerPhoto.setImageResource(R.mipmap.ic_launcher);
             }
         } else {
-            holder.playerPhoto.setImageResource(R.mipmap.icon);
+            holder.playerPhoto.setImageResource(R.mipmap.ic_launcher);
         }
 
         holder.playerName.setText(player.getName());

@@ -90,10 +90,10 @@ public class PlayersFragment extends Fragment {
                     Bitmap myBitmap = new PhotoUtil().getBitmapFromPath(imgFile.getAbsolutePath());
                     playerPhoto.setImageBitmap(myBitmap);
                 } else {
-                    playerPhoto.setImageResource(R.mipmap.icon);
+                    playerPhoto.setImageResource(R.mipmap.ic_launcher);
                 }
             } else {
-                playerPhoto.setImageResource(R.mipmap.icon);
+                playerPhoto.setImageResource(R.mipmap.ic_launcher);
             }
 
             playerName.setText(player.getName());
@@ -152,10 +152,10 @@ public class PlayersFragment extends Fragment {
                     Bitmap myBitmap = new PhotoUtil().getBitmapFromPath(imgFile.getAbsolutePath());
                     playerPhoto.setImageBitmap(myBitmap);
                 } else {
-                    playerPhoto.setImageResource(R.mipmap.icon);
+                    playerPhoto.setImageResource(R.mipmap.ic_launcher);
                 }
             } else {
-                playerPhoto.setImageResource(R.mipmap.icon);
+                playerPhoto.setImageResource(R.mipmap.ic_launcher);
             }
 
             playerName.setText(player.getName());

@@ -105,6 +105,7 @@ public class CreateGameActivity extends AppCompatActivity {
         if (resultCode != Activity.RESULT_CANCELED) {
             setPhoto();
         } else {
+            photo = null;
             Toast.makeText(CreateGameActivity.this, getString(R.string.photo_cancelled), Toast.LENGTH_SHORT).show();
         }
     }

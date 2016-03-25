@@ -32,8 +32,7 @@
         <Button
             android:id="@+id/previousPlayerBtn"
             style="@style/primaryBtn"
-            android:drawableRight="@mipmap/ic_add_white_24dp"
-            android:text="@string/previous_player" />
+            android:drawableRight="@mipmap/ic_add_white_24dp" />
 
         <Button
             android:id="@+id/currentPlayersBtn"

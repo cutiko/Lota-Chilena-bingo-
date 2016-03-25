@@ -4,10 +4,13 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
@@ -27,6 +30,7 @@ import cl.cutiko.lotachilena.R;
 import cl.cutiko.lotachilena.adapters.PlayersAdapter;
 import cl.cutiko.lotachilena.models.gamesPlayers.GamePlayer;
 import cl.cutiko.lotachilena.models.players.Player;
+import cl.cutiko.lotachilena.models.players.Queries;
 import cl.cutiko.lotachilena.views.activities.photUtil.PhotoUtil;
 
 public class AddPlayersActivity extends AppCompatActivity {
@@ -51,14 +55,25 @@ public class AddPlayersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_players);
 
         gameId = getIntent().getLongExtra("gameId", 0);
-        playersQueries = new cl.cutiko.lotachilena.models.players.Queries();
+        playersQueries = new Queries();
 
         addPlayerBtn = (Button) findViewById(R.id.addPlayerBtn);
         previousPlayerBtn = (Button) findViewById(R.id.previousPlayerBtn);
         currentPlayersBtn = (Button) findViewById(R.id.currentPlayersBtn);
 
         setAddPlayerBtn();
-        setPreviousPlayerBtn();
+
+        List<Player> players = playersQueries.every();
+
+        if (players != null && players.size() > 0) {
+            previousPlayerBtn.setText(getString(R.string.previous_player) + " (" + String.valueOf(players.size()) + ")");
+            setPreviousPlayerBtn();
+        } else {
+            previousPlayerBtn.setText(getString(R.string.previous_player) + " (0)");
+            previousPlayerBtn.setEnabled(false);
+            previousPlayerBtn.setBackgroundColor(ContextCompat.getColor(this, R.color.gray));
+        }
+
         setCurrentPlayersBtn();
 
         setStartGame();

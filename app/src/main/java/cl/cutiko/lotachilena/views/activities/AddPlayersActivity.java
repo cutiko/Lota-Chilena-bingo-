@@ -241,6 +241,7 @@ public class AddPlayersActivity extends AppCompatActivity {
         if (resultCode != Activity.RESULT_CANCELED) {
             setPhoto();
         } else {
+            photo = null;
             Toast.makeText(AddPlayersActivity.this, getString(R.string.photo_cancelled), Toast.LENGTH_SHORT).show();
         }
     }

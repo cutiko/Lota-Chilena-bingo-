@@ -36,4 +36,9 @@
     <string name="delete_winner">¿Borrar el ganador?</string>
     <string name="accept">Aceptar</string>
 
+    <string name="gpvch_header">Nueva versión disponible</string>
+    <string name="gpvch_button_positive">Actualizar</string>
+    <string name="gpvch_button_negative">Después (no recomendado)</string>
+    <string name="gpvch_new_version_info_title">Novedades</string>
+
 </resources>

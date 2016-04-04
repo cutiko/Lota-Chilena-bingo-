@@ -14,6 +14,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.robohorse.gpversionchecker.GPVersionChecker;
+import com.robohorse.gpversionchecker.base.CheckingStrategy;
+
 import java.util.List;
 
 import cl.cutiko.lotachilena.R;
@@ -36,6 +39,8 @@ public class GameListActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        checkUpdates();
+
         gamesQueries = new Queries();
         games = gamesQueries.all();
 
@@ -44,6 +49,12 @@ public class GameListActivity extends AppCompatActivity {
         setGamesList();
 
         setCreateGameBtn();
+    }
+
+    private void checkUpdates(){
+        new GPVersionChecker.Builder(this)
+                .setCheckingStrategy(CheckingStrategy.ONE_PER_DAY)
+                .create();
     }
 
     private void setBroadcastRecevier() {
